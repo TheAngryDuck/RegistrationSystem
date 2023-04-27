@@ -4,6 +4,28 @@
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
-
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Temp. (C)</th>
+            <th>Temp. (F)</th>
+            <th>Summary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (events != null)
+        {
+            @foreach (var eventOb in events)
+            {
+                <tr>
+                    <td>@eventOb.Name</td>
+                    <td>@eventOb.Date</td>
+                    <td>@eventOb.Location</td>
+                    <td>@participants</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
 <SurveyPrompt Title="How is Blazor working for you?" />
