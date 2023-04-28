@@ -1,0 +1,11 @@
+﻿@using RegistrationSystem.Data.Interface;
+@inject NavigationManager NavigationManager
+@inject IEventService EventService
+
+<tr>
+    <td>@eventOb.Name</td>
+    <td>@eventOb.Date</td>
+    <td>@eventOb.Location</td>
+    <td><button class="btn btn-light" @onclick="NavigateToEvent">OSAVÕTJAD</button></td>
+    <td><button class="btn btn-light" @onclick="DeleteEvent"><span class="e-icons btn-close" /></button></td>
+</tr>

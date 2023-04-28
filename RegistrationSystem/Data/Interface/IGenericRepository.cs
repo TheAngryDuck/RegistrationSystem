@@ -4,7 +4,7 @@ namespace RegistrationSystem.Data.Interface
 {
     public interface IGenericRepository<T> where T : class
     {
-        T GetById(int id);
+        T GetById(Guid id);
         IEnumerable<T> GetAll();
         void Update(T entity);
         void Add(T entity);

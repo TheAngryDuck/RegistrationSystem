@@ -1,0 +1,10 @@
+﻿@page "/event/{Id:guid}"
+@using RegistrationSystem.Data.Interface;
+@inject IEventService EventService;
+
+
+<PageTitle>Event</PageTitle>
+
+<span>Ürituse nimi: @eventOb.Name</span>
+<span>Ürituse nimi: @eventOb.Date</span>
+<span>Ürituse nimi: @eventOb.Location</span>

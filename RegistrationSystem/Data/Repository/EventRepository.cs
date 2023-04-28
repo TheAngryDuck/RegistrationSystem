@@ -5,7 +5,7 @@ using RegistrationSystem.Data.Interface;
 namespace RegistrationSystem.Data.Repository
 {
 
-    public class EventRepository : GenericRepository<Event>, IEventEventRepository
+    public class EventRepository : GenericRepository<Event>, IEventRepository
     {
         public EventRepository(RegistrationSystemContext context) : base(context)
         {
