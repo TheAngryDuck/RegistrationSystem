@@ -17,7 +17,7 @@ namespace RegistrationSystem.Components
             NavigationManager.NavigateTo("/event/" + eventOb.Id, false);
         }
 
-        private void DeleteEvent() 
+        private void DeleteEvent()
         {
             EventService.removeEvent(eventOb);
             OnEventDeleted.InvokeAsync();

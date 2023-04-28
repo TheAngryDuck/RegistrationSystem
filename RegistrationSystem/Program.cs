@@ -19,6 +19,9 @@ builder.Services.AddTransient<IParticipantRepository, ParticipantRepository>();
 builder.Services.AddTransient<IParticipantInEventRepository, ParticipantInEventRepository>();
 builder.Services.AddTransient<IPaymentMethodRepository, PaymentMethodRepository>();
 builder.Services.AddTransient<IEventService, EventService>();
+builder.Services.AddTransient<IParticipantService, ParticipantService>();
+builder.Services.AddTransient<IPaymentMethodService, PaymentMethodService>();
+builder.Services.AddTransient<IParticipantInEventService, ParticipantInEventService>();
 builder.Services.AddSyncfusionBlazor();
 var app = builder.Build();
 

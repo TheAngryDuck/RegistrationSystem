@@ -1,0 +1,17 @@
+﻿<div>
+
+            @if (participantInEvents != null)
+            {
+                @foreach (var participant in participantInEvents)
+                {
+            <ParticipantListElement participant="@participant" OnParticipantRemoved="ParticipantRemoved"></ParticipantListElement>
+
+                }
+            }
+            else
+            {
+                <tr>
+                    <td><h3>No events available!</h3></td>
+                </tr>
+            }
+</div>

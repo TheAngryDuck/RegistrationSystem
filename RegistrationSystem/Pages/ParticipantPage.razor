@@ -1,0 +1,33 @@
+﻿@page "/participant/{Id:guid}"
+@using RegistrationSystem.Data.Entity;
+@using RegistrationSystem.Data.Interface;
+@inject IParticipantService ParticipantService;
+
+<EditForm Model="participant" OnSubmit="Save">
+    <tbody style="background-color: white;">
+        <tr>
+            <td>Nimi: </td>
+            <td><InputText id="name" @bind-Value="participant.Name" /></td>
+        </tr>
+        @if (participant.IdCode != null)
+        {
+            <tr>
+                <td>Perenimi: </td>
+            <InputText id="familyName" @bind-Value="participant.FamilyName" />
+            </tr>
+            <tr>
+                <td>Isikukood: </td>
+                <InputText id="id" @bind-Value="participant.IdCode" />
+            </tr>
+        }
+        @if (participant.RegistryCode != null)
+        {
+            <tr>
+                <td>Ettevõtte registrikood: </td>
+                <InputText id="code" @bind-Value="participant.RegistryCode" />
+            </tr>
+        }
+        <button type="submit">Submit</button>
+    </tbody>
+    
+</EditForm>

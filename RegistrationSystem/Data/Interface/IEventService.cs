@@ -1,5 +1,4 @@
 ﻿using RegistrationSystem.Data.Entity;
-using RegistrationSystem.Data.Repository;
 
 namespace RegistrationSystem.Data.Interface
 {
@@ -9,7 +8,7 @@ namespace RegistrationSystem.Data.Interface
         public void addEvent(Event eventOb);
         public void removeEvent(Event eventOb);
         public void updateEvent(Event eventOb);
-        public Event getEventById(Guid id); 
+        public Event getEventById(Guid id);
 
     }
 }

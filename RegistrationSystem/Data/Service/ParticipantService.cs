@@ -1,11 +1,10 @@
 ﻿using RegistrationSystem.Data.Entity;
 using RegistrationSystem.Data.Interface;
-using RegistrationSystem.Data.Repository;
 
 namespace RegistrationSystem.Data.Service
 {
     public class ParticipantService : IParticipantService
-    { 
+    {
         private readonly IParticipantRepository _participantRepository;
 
         public ParticipantService(IParticipantRepository participantRepository)
@@ -31,6 +30,10 @@ namespace RegistrationSystem.Data.Service
         public void updateParticipant(Participant participant)
         {
             _participantRepository.Update(participant);
+        }
+        public Participant getParticipantById(Guid id)
+        {
+            return _participantRepository.GetById(id);
         }
     }
 }

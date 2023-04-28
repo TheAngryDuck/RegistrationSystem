@@ -12,6 +12,6 @@
 
         public string? Notes { get; set; }
 
-        public ParticipantInEvent[]? Participants { get; set; }
+        public List<ParticipantInEvent>? Participants { get; set; }
     }
 }

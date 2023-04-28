@@ -1,0 +1,18 @@
+﻿@using RegistrationSystem.Data.Interface;
+@inject NavigationManager NavigationManager
+@inject IParticipantInEventService ParticipantInEventService
+
+<tr>
+    <td/>
+    <td>@participant.Participant.Name</td>
+    @if (participant.Participant.FamilyName != null)
+    {
+        <td>@participant.Participant.IdCode</td>
+    }
+    else
+    {
+        <td>@participant.Participant.RegistryCode</td>
+    }
+    <td><button class="btn btn-light" @onclick="NavigateToParticipant">VAATA</button></td>
+    <td><button class="btn btn-light" @onclick="DeleteParticipant">KUSTUTA</button></td>
+</tr>

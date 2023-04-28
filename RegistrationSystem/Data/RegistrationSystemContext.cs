@@ -7,7 +7,7 @@ namespace RegistrationSystem.Data
     {
         public RegistrationSystemContext(DbContextOptions<RegistrationSystemContext> options) : base(options)
         {
-            
+
         }
 
         public DbSet<Event> Events { get; set; }

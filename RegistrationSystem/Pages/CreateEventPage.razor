@@ -1,5 +1,29 @@
 ﻿@page "/createEvent"
 @page "/event/create"
+@using RegistrationSystem.Data.Interface;
+@inject IEventService EventService;
+@inject NavigationManager NavigationManager
 
-<h1>HELLO</h1>
+<EditForm Model="eventOb" OnSubmit="Save">
+    <tbody style="background-color: white;">
+        <tr>
+            <td>Nimi: </td>
+            <td><InputText id="name" @bind-Value="eventOb.Name" /></td>
+        </tr>
+        <tr>
+            <td>Kuupäev: </td>
+            <InputDate @bind-Value="eventOb.Date"  />
+        </tr>
+        <tr>
+            <td>Asukoht: </td>
+            <InputText @bind-Value="eventOb.Location" />
+        </tr>
+        <tr>
+            <td>lisa info: </td>
+            <InputTextArea @bind-Value="eventOb.Notes" />
+        </tr>
+        <button type="submit">Submit</button>
+    </tbody>
+
+</EditForm>
 

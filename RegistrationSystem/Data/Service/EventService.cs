@@ -17,7 +17,7 @@ namespace RegistrationSystem.Data.Service
             return _eventRepository.GetAll();
         }
 
-        public void addEvent(Event eventOb) 
+        public void addEvent(Event eventOb)
         {
             _eventRepository.Add(eventOb);
         }
@@ -34,7 +34,7 @@ namespace RegistrationSystem.Data.Service
 
         public Event getEventById(Guid id)
         {
-          return  _eventRepository.GetById(id);
+            return _eventRepository.GetById(id);
         }
     }
 }

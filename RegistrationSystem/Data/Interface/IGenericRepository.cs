@@ -1,6 +1,4 @@
-﻿using System.Linq.Expressions;
-
-namespace RegistrationSystem.Data.Interface
+﻿namespace RegistrationSystem.Data.Interface
 {
     public interface IGenericRepository<T> where T : class
     {

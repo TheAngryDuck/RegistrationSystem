@@ -1,5 +1,4 @@
-﻿using System;
-using RegistrationSystem.Data.Entity;
+﻿using RegistrationSystem.Data.Entity;
 using RegistrationSystem.Data.Interface;
 
 namespace RegistrationSystem.Data.Repository
