@@ -2,7 +2,5 @@
 
 namespace RegistrationSystem.Data.Interface
 {
-    public interface IParticipantRepository : IGenericRepository<Participant>
-    {
-    }
+    public interface IParticipantRepository : IGenericRepository<Participant> { }
 }

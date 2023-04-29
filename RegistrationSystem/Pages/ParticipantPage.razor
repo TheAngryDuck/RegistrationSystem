@@ -5,39 +5,38 @@
 @inject NavigationManager NavigationManager
 
 <div class="container justify-content-center">
-    <RegistrationSystem.Components.SubBanner Title="Osavõtja info"/>
+    <SubBanner Title="Osavõtja info"/>
     <div class="row justify-content-center main-row">
         <div class="col center-block">
-            <EditForm Model="participant" OnSubmit="Save">
+            <EditForm Model="Participant" OnSubmit="Save">
     <tbody style="background-color: white;">
         <tr>
             <td>Nimi: </td>
-            <td><InputText id="name" @bind-Value="participant.Name" /></td>
+            <td><InputText id="name" @bind-Value="Participant.Name" /></td>
         </tr>
-        @if (participant.IdCode != null)
+        @if (Participant.IdCode != null)
         {
             <tr>
                 <td>Perenimi: </td>
-            <InputText id="familyName" @bind-Value="participant.FamilyName" />
+            <InputText id="familyName" @bind-Value="Participant.FamilyName" />
             </tr>
             <tr>
                 <td>Isikukood: </td>
-                <InputText id="id" @bind-Value="participant.IdCode" />
+                <InputText id="id" @bind-Value="Participant.IdCode" />
             </tr>
         }
-        @if (participant.RegistryCode != null)
+        @if (Participant.RegistryCode != null)
         {
             <tr>
                 <td>Ettevõtte registrikood: </td>
-                <InputText id="code" @bind-Value="participant.RegistryCode" />
+                <InputText id="code" @bind-Value="Participant.RegistryCode" />
             </tr>
         }
         <button class="btn-outline-danger" @onclick="BackToLanding">Tagasi</button>
         <button type="submit">Submit</button>
-    </tbody>
-    
+    </tbody>   
 </EditForm>
         </div>
     </div>
-    <RegistrationSystem.Components.Footer />
+    <Footer />
 </div>

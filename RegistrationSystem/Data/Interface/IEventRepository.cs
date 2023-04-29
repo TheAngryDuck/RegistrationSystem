@@ -2,7 +2,5 @@
 
 namespace RegistrationSystem.Data.Interface
 {
-    public interface IEventRepository : IGenericRepository<Event>
-    {
-    }
+    public interface IEventRepository : IGenericRepository<Event> { }
 }

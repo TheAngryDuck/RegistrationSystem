@@ -3,6 +3,5 @@
 namespace RegistrationSystem.Data.Interface
 {
     public interface IPaymentMethodRepository : IGenericRepository<PaymentMethod>
-    {
-    }
+    { }
 }

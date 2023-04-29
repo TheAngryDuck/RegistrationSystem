@@ -1,5 +1,4 @@
 ﻿using RegistrationSystem.Data.Entity;
-using System.Numerics;
 
 namespace RegistrationSystem.Utils
 {
@@ -22,9 +21,9 @@ namespace RegistrationSystem.Utils
 
         public bool isValidIdCode(string code)
         {
-            if(code.Length > 9 && code.Length < 12 && (long.TryParse(code, out _))) 
+            if (code.Length > 9 && code.Length < 12 && (long.TryParse(code, out _)))
             {
-                int firstNumber = int.Parse(code.Substring(0,1));
+                int firstNumber = int.Parse(code.Substring(0, 1));
                 if (firstNumber > 0 && firstNumber < 7)
                 {
                     return true;

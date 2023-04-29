@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using RegistrationSystem.Data.Entity;
-using RegistrationSystem.Utils;
 
 namespace RegistrationSystem.Pages
 {
@@ -9,43 +8,42 @@ namespace RegistrationSystem.Pages
         [Parameter]
         public Guid Id { get; set; }
 
-        private Event eventOb { get; set; }
+        private Event EventOb { get; set; }
 
-        private bool addNewParticipant { get; set; }
+        private bool AddNewParticipant { get; set; }
 
-        private bool registerCompany { get; set; }
+        private bool RegisterCompany { get; set; }
 
-        private Participant participant { get; set; }
+        private Participant Participant { get; set; }
 
-        private IEnumerable<Participant> participants { get; set; }
+        private IEnumerable<Participant> Participants { get; set; }
 
-        private ParticipantInEvent participantInEvent { get; set; }
+        private ParticipantInEvent ParticipantInEvent { get; set; }
 
-        private IEnumerable<PaymentMethod> paymentMethods { get; set; }
+        private IEnumerable<PaymentMethod> PaymentMethods { get; set; }
 
-        private List<ParticipantInEvent> participantInEvents { get; set; }
+        private List<ParticipantInEvent> ParticipantInEvents { get; set; }
 
-        private int numberOfParticipants { get; set; }
-
-        private EventUtils EventUtils { get; set; }
+        private int NumberOfParticipants { get; set; }
 
         private void SaveParticipant()
         {
-            if (participant.IdCode != null && participant.Name != null && participant.FamilyName != null)
+            if (Participant.IdCode != null && Participant.Name != null && Participant.FamilyName != null)
             {
-                if (EventUtils.isValidIdCode(participant.IdCode))
+                if (util.isValidIdCode(Participant.IdCode))
                 {
-                    ParticipantService.addParticipant(participant);
-                    addNewParticipant = false;
-                    NavigationManager.NavigateTo("/event/" + eventOb.Id, true);
+                    ParticipantService.addParticipant(Participant);
+                    AddNewParticipant = false;
+                    NavigationManager.NavigateTo("/event/" + EventOb.Id, true);
                 }
-            } else if(participant.RegistryCode != null && participant.Name != null)
-                {
-                ParticipantService.addParticipant(participant);
-                addNewParticipant = false;
-                NavigationManager.NavigateTo("/event/" + eventOb.Id, true);
             }
-            
+            else if (Participant.RegistryCode != null && Participant.Name != null)
+            {
+                ParticipantService.addParticipant(Participant);
+                AddNewParticipant = false;
+                NavigationManager.NavigateTo("/event/" + EventOb.Id, true);
+            }
+
         }
 
         private void BackToLanding()
@@ -55,33 +53,32 @@ namespace RegistrationSystem.Pages
 
         private void SaveEntry()
         {
-            if (participantInEvent.ParticipantId == Guid.Empty && participantInEvent.PaymentMethodId == Guid.Empty && participantInEvent.ParticipantCount > 0) 
-            { 
-                participantInEvent.EventId = eventOb.Id;
-                ParticipantInEventService.addParticipantInEvent(participantInEvent);
-                NavigationManager.NavigateTo("/event/" + eventOb.Id, true);
+            if (ParticipantInEvent.ParticipantId == Guid.Empty && ParticipantInEvent.PaymentMethodId == Guid.Empty && ParticipantInEvent.ParticipantCount > 0)
+            {
+                ParticipantInEvent.EventId = EventOb.Id;
+                ParticipantInEventService.addParticipantInEvent(ParticipantInEvent);
+                NavigationManager.NavigateTo("/event/" + EventOb.Id, true);
             }
-            
+
         }
 
         private void EParticipantDeleted()
         {
-            NavigationManager.NavigateTo("/event/" + eventOb.Id, true);
+            NavigationManager.NavigateTo("/event/" + EventOb.Id, true);
         }
 
         protected override void OnParametersSet()
         {
-            eventOb = EventService.getEventById(Id);
-            participant = new Participant();
-            participantInEvent = new ParticipantInEvent();
-            participants = new List<Participant>();
-            paymentMethods = new List<PaymentMethod>();
-            participantInEvents = new List<ParticipantInEvent>();
-            participants = ParticipantService.getParticipants();
-            paymentMethods = PaymentMethodService.getPaymentMethods();
-            participantInEvents = ParticipantInEventService.GetAllRelatedToEventId(Id).ToList<ParticipantInEvent>();
-            EventUtils = new EventUtils();
-            numberOfParticipants = EventUtils.CountParticipants(eventOb);
+            EventOb = EventService.getEventById(Id);
+            Participant = new Participant();
+            ParticipantInEvent = new ParticipantInEvent();
+            Participants = new List<Participant>();
+            PaymentMethods = new List<PaymentMethod>();
+            ParticipantInEvents = new List<ParticipantInEvent>();
+            Participants = ParticipantService.getParticipants();
+            PaymentMethods = PaymentMethodService.getPaymentMethods();
+            ParticipantInEvents = ParticipantInEventService.GetAllRelatedToEventId(Id).ToList<ParticipantInEvent>();
+            NumberOfParticipants = util.CountParticipants(EventOb);
         }
     }
 }

@@ -3,14 +3,13 @@
 @inject IEventService EventService;
 @inject NavigationManager NavigationManager
 
-
 <PageTitle>Index</PageTitle>
 
 <div class="container-sm justify-content-center">
-    <RegistrationSystem.Components.MainBanner/>
+    <MainBanner/>
     <div class="row">
-        <RegistrationSystem.Components.EventList events="@futureEvents" title="Tulevased Üritused" isFutureList="true" OnEventDeleted="EventDeleted" />
-        <RegistrationSystem.Components.EventList events="@pastEvents" title="Toimunud Üritused" OnEventDeleted="EventDeleted" />
+        <EventList Events="@futureEvents" Title="Tulevased Üritused" IsFutureList="true" OnEventDeleted="EventDeleted" />
+        <EventList Events="@pastEvents" Title="Toimunud Üritused" OnEventDeleted="EventDeleted" />
     </div>
-    <RegistrationSystem.Components.Footer/>
+    <Footer/>
 </div>

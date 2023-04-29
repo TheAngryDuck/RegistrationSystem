@@ -5,10 +5,7 @@ namespace RegistrationSystem.Data
 {
     public class RegistrationSystemContext : DbContext
     {
-        public RegistrationSystemContext(DbContextOptions<RegistrationSystemContext> options) : base(options)
-        {
-
-        }
+        public RegistrationSystemContext(DbContextOptions<RegistrationSystemContext> options) : base(options) { }
 
         public DbSet<Event> Events { get; set; }
 

@@ -1,16 +1,16 @@
 ﻿@page "/event/{Id:guid}"
 @using RegistrationSystem.Data.Interface;
+@using RegistrationSystem.Utils;
 @inject IEventService EventService;
 @inject IParticipantService ParticipantService;
 @inject IPaymentMethodService PaymentMethodService;
 @inject IParticipantInEventService ParticipantInEventService;
 @inject NavigationManager NavigationManager
-
-
+@inject EventUtils util
 
 <PageTitle>Event</PageTitle>
 <div class="container justify-content-center">
-    <RegistrationSystem.Components.SubBanner Title="Osavõtjad"/>
+    <SubBanner Title="Osavõtjad"/>
     <div class="row justify-content-center main-row">
         <div class="col">
             <table>
@@ -24,19 +24,19 @@
                 <tbody style="background-color: white;">
                     <tr>
                         <td>Ürituse nimi:</td>
-                        <td>@eventOb.Name</td>
+                        <td>@EventOb.Name</td>
                     </tr>
                     <tr>
                         <td>Kuupäev:</td>
-                        <td>@eventOb.Date</td>
+                        <td>@EventOb.Date</td>
                     </tr>
                     <tr>
                         <td>Asukoht:</td>
-                        <td>@eventOb.Location</td>
+                        <td>@EventOb.Location</td>
                     </tr>
                     <tr>
                         <td>Osavõtjate arv:</td>
-                        <td>@numberOfParticipants</td>
+                        <td>@NumberOfParticipants</td>
                     </tr>
                 </tbody>
             </table>
@@ -51,7 +51,7 @@
                     </tr>
                 </thead>
                 <tbody style="background-color: white;">
-                    <RegistrationSystem.Components.ParticipantList OnParticipantRemoved="EParticipantDeleted" participantInEvents="participantInEvents" />
+                    <ParticipantList OnParticipantRemoved="EParticipantDeleted" participantInEvents="ParticipantInEvents" />
                 </tbody>
             </table>
         </div>
@@ -59,48 +59,48 @@
     <div class="row justify-content-center main-row">
         <div class="col">
             <span>Loo uus osaleja? </span>
-            <input type="checkbox" @bind="addNewParticipant" />
+            <input type="checkbox" @bind="AddNewParticipant" />
         </div>
     </div>
     <div class="row justify-content-center main-row">
         <div class="col">
-            @if (@addNewParticipant)
+            @if (AddNewParticipant)
             {
                 <h3>Uue osavõtja loomine</h3>
-                <EditForm Model="participant" OnSubmit="SaveParticipant">
+                <EditForm Model="Participant" OnSubmit="SaveParticipant">
                     <table>
                         <tbody style="background-color: white;">
                             <tr>
                                 <td><span>Oled Ettevõte? </span></td>
-                                <td><InputCheckbox @bind-Value="registerCompany"></InputCheckbox></td>
+                                <td><InputCheckbox @bind-Value="RegisterCompany"></InputCheckbox></td>
                             </tr>
                             <tr>
                                 <td><span>Nimi: </span></td>
                                 <td>
-                                    <InputText id="name" @bind-Value="participant.Name" />
+                                    <InputText id="name" @bind-Value="Participant.Name" />
                                 </td>
                             </tr>
-                            @if (!registerCompany)
+                            @if (!RegisterCompany)
                             {
                                 <tr>
                                     <td><span>Perenimi: </span></td>
                                     <td>
-                                        <InputText id="familyName" @bind-Value="participant.FamilyName" />
+                                        <InputText id="familyName" @bind-Value="Participant.FamilyName" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><span>Isikukood: </span></td>
                                     <td>
-                                        <InputText id="id" @bind-Value="participant.IdCode" />
+                                        <InputText id="id" @bind-Value="Participant.IdCode" />
                                     </td>
                                 </tr>
                             }
-                            @if (registerCompany)
+                            @if (RegisterCompany)
                             {
                                 <tr>
                                     <td><span>Ettevõtte registrikood: </span></td>
                                     <td>
-                                        <InputText id="code" @bind-Value="participant.RegistryCode" />
+                                        <InputText id="code" @bind-Value="Participant.RegistryCode" />
                                     </td>
                                 </tr>
                             }
@@ -112,14 +112,14 @@
             else
             {
                 <h3>Osavõtjate lisamine</h3>
-                <EditForm Model="participantInEvent" OnSubmit="SaveEntry">
+                <EditForm Model="ParticipantInEvent" OnSubmit="SaveEntry">
                     <table>
                         <tbody style="background-color: white;">
                             <tr>
                                 <td><span>Osaleja </span></td>
                                 <td>
-                                    <select class="form-select" @bind="participantInEvent.ParticipantId">
-                                        @foreach (var par in participants)
+                                    <select class="form-select" @bind="ParticipantInEvent.ParticipantId">
+                                        @foreach (var par in Participants)
                                         {
                                             if (par.FamilyName != null)
                                             {
@@ -136,8 +136,8 @@
                             <tr>
                                 <td><span>Maksmisviis </span></td>
                                 <td>
-                                    <select class="form-select" @bind="participantInEvent.PaymentMethodId">
-                                        @foreach (var method in paymentMethods)
+                                    <select class="form-select" @bind="ParticipantInEvent.PaymentMethodId">
+                                        @foreach (var method in PaymentMethods)
                                         {
                                             <option value="@method.Id">@method.Name</option>
                                         }
@@ -147,24 +147,22 @@
                             <tr>
                                 <td><span>Osalejate arv: </span></td>
                                 <td>
-                                    <InputNumber id="numberOfParticipants" @bind-Value="participantInEvent.ParticipantCount" />
+                                    <InputNumber id="numberOfParticipants" @bind-Value="ParticipantInEvent.ParticipantCount" />
                                 </td>
                             </tr>
                             <tr>
                                 <td>lisa info: </td>
-                                <InputTextArea @bind-Value="participantInEvent.Notes" />
+                                <InputTextArea @bind-Value="ParticipantInEvent.Notes" />
                             </tr>
                             <tr>
-                                <td>
-                                    <button class="btn-outline-danger" @onclick="BackToLanding">Tagasi</button>
-                                </td>
+                                <td><button class="btn-outline-danger" @onclick="BackToLanding">Tagasi</button></td>
                                 <td><button class="btn btn-primary" type="submit">Submit</button></td>
-                                </tr>
+                            </tr>
                         </tbody>
                     </table>
                 </EditForm>
             }
         </div>
     </div>
-    <RegistrationSystem.Components.Footer />
+    <Footer />
 </div>

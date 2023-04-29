@@ -3,6 +3,7 @@ using RegistrationSystem.Data;
 using RegistrationSystem.Data.Interface;
 using RegistrationSystem.Data.Repository;
 using RegistrationSystem.Data.Service;
+using RegistrationSystem.Utils;
 using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddTransient<IParticipantService, ParticipantService>();
 builder.Services.AddTransient<IPaymentMethodService, PaymentMethodService>();
 builder.Services.AddTransient<IParticipantInEventService, ParticipantInEventService>();
+builder.Services.AddSingleton<EventUtils, EventUtils>();
 builder.Services.AddSyncfusionBlazor();
 var app = builder.Build();
 
@@ -29,7 +31,6 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
 }
-
 
 app.UseStaticFiles();
 

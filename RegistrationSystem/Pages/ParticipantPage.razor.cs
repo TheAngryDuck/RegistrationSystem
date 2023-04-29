@@ -11,7 +11,7 @@ namespace RegistrationSystem.Pages
 
         private void Save()
         {
-            ParticipantService.updateParticipant(participant);
+            ParticipantService.updateParticipant(Participant);
         }
 
         private void BackToLanding()
@@ -19,11 +19,11 @@ namespace RegistrationSystem.Pages
             NavigationManager.NavigateTo("/", true);
         }
 
-        private Participant participant { get; set; }
+        private Participant? Participant { get; set; }
 
         protected override void OnParametersSet()
         {
-            participant = ParticipantService.getParticipantById(Id);
+            Participant = ParticipantService.getParticipantById(Id);
         }
     }
 }

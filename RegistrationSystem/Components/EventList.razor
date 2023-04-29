@@ -2,15 +2,15 @@
 <table class="table table-borderless">
         <thead class="listHeader">
             <tr>
-                <th colspan="5"><h2 style="color: white;">@title</h2></th>
+                <th colspan="5"><h2 style="color: white;">@Title</h2></th>
             </tr>
     </thead>
     <tbody style="background-color: white;">
-        @if (events != null)
+        @if (Events != null)
         {
-            @foreach (var eventOb in events)
+            @foreach (var eventOb in Events)
             {
-                    if (isFutureList)
+                    if (IsFutureList)
                     {
                         <EventListElement eventOb="@eventOb" OnEventDeleted="EventDeleted"></EventListElement>
                     }
@@ -20,7 +20,7 @@
                     }
                     
             }
-            @if (isFutureList)
+            @if (IsFutureList)
                 {
                     <tr>
                         <td colspan="5">

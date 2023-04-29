@@ -5,10 +5,10 @@
 @inject NavigationManager NavigationManager
 
 <div class="container justify-content-center">
-    <RegistrationSystem.Components.SubBanner Title="Ürituse lisamine"/>
+    <SubBanner Title="Ürituse lisamine"/>
     <div class="row justify-content-center main-row">
         <div class="col">
-            <EditForm Model="eventOb" OnSubmit="Save">
+            <EditForm Model="EventOb" OnSubmit="Save">
                 <table class="table table-borderless">
                     <thead style="text-align:center;">
                         <tr class="justify-content-center">
@@ -16,22 +16,21 @@
                         </tr>
                     </thead>
                     <tbody style="background-color: white;">
-
                         <tr>
                             <td>Nimi: </td>
-                            <td><InputText id="name" @bind-Value="eventOb.Name" /></td>
+                            <td><InputText id="name" @bind-Value="EventOb.Name" /></td>
                         </tr>
                         <tr>
                             <td>Kuupäev: </td>
-                            <td><InputDate @bind-Value="eventOb.Date" /></td>
+                            <td><InputDate @bind-Value="EventOb.Date" /></td>
                         </tr>
                         <tr>
                             <td>Asukoht: </td>
-                            <td><InputText @bind-Value="eventOb.Location" /></td>
+                            <td><InputText @bind-Value="EventOb.Location" /></td>
                         </tr>
                         <tr>
                             <td>lisa info: </td>
-                            <td><InputTextArea @bind-Value="eventOb.Notes" /></td>
+                            <td><InputTextArea @bind-Value="EventOb.Notes" /></td>
                         </tr>
                         <tr>
                             <td>
@@ -42,12 +41,11 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
-                
+                </table>                
             </EditForm>
         </div>
     </div>
-    <RegistrationSystem.Components.Footer />
+    <Footer />
 </div>
 
 

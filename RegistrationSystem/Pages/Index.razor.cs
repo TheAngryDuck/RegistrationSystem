@@ -18,13 +18,6 @@ namespace RegistrationSystem.Pages
         {
             futureEvents = new List<Data.Entity.Event>();
             pastEvents = new List<Data.Entity.Event>();
-
-            //var eventOb = new Data.Entity.Event();
-            //eventOb.Location = "Tallinn";
-            //eventOb.Name = "eventFuture";
-            //eventOb.Date = DateTime.Now;
-            //eventOb.Date = eventOb.Date.AddYears(1);
-            // EventService.addEvent(eventOb);
             var events = EventService.getEvents();
             foreach (var e in events)
             {

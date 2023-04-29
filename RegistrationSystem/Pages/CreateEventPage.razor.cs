@@ -7,12 +7,11 @@ namespace RegistrationSystem.Pages
     {
         private void Save()
         {
-            if (eventOb.Name != null && eventOb.Location != null) 
+            if (EventOb.Name != null && EventOb.Location != null)
             {
-                EventService.addEvent(eventOb);
+                EventService.addEvent(EventOb);
                 NavigationManager.NavigateTo("/", true);
             }
-            
         }
 
         private void BackToLanding()
@@ -20,12 +19,12 @@ namespace RegistrationSystem.Pages
             NavigationManager.NavigateTo("/", true);
         }
 
-        private Event eventOb { get; set; }
+        private Event EventOb { get; set; }
 
         protected override void OnParametersSet()
         {
-            eventOb = new Event();
-            eventOb.Date = DateTime.Now;
+            EventOb = new Event();
+            EventOb.Date = DateTime.Now;
         }
     }
 }
