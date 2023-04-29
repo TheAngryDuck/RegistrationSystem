@@ -4,26 +4,43 @@
 @inject IEventService EventService;
 @inject NavigationManager NavigationManager
 
-<EditForm Model="eventOb" OnSubmit="Save">
-    <tbody style="background-color: white;">
-        <tr>
-            <td>Nimi: </td>
-            <td><InputText id="name" @bind-Value="eventOb.Name" /></td>
-        </tr>
-        <tr>
-            <td>Kuupäev: </td>
-            <InputDate @bind-Value="eventOb.Date"  />
-        </tr>
-        <tr>
-            <td>Asukoht: </td>
-            <InputText @bind-Value="eventOb.Location" />
-        </tr>
-        <tr>
-            <td>lisa info: </td>
-            <InputTextArea @bind-Value="eventOb.Notes" />
-        </tr>
-        <button type="submit">Submit</button>
-    </tbody>
+<div class="container justify-content-center">
+    <RegistrationSystem.Components.SubBanner Title="Ürituse lisamine"/>
+    <div class="row justify-content-center main-row">
+        <div class="col">
+            <EditForm Model="eventOb" OnSubmit="Save">
+                <table class="table table-borderless">
+                    <thead style="text-align:center;">
+                        <tr class="justify-content-center">
+                            <th colspan="2"><h2 style="width:fit-content;">Ürituse Lisamine</h2></th>
+                        </tr>
+                    </thead>
+                    <tbody style="background-color: white;">
 
-</EditForm>
+                        <tr>
+                            <td>Nimi: </td>
+                            <td><InputText id="name" @bind-Value="eventOb.Name" /></td>
+                        </tr>
+                        <tr>
+                            <td>Kuupäev: </td>
+                            <td><InputDate @bind-Value="eventOb.Date" /></td>
+                        </tr>
+                        <tr>
+                            <td>Asukoht: </td>
+                            <td><InputText @bind-Value="eventOb.Location" /></td>
+                        </tr>
+                        <tr>
+                            <td>lisa info: </td>
+                            <td><InputTextArea @bind-Value="eventOb.Notes" /></td>
+                        </tr>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </tbody>
+                </table>
+                
+            </EditForm>
+        </div>
+    </div>
+    <RegistrationSystem.Components.Footer />
+</div>
+
 

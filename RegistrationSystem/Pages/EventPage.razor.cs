@@ -23,7 +23,7 @@ namespace RegistrationSystem.Pages
 
         private IEnumerable<PaymentMethod> paymentMethods { get; set; }
 
-        private IEnumerable<ParticipantInEvent> participantInEvents { get; set; }
+        private List<ParticipantInEvent> participantInEvents { get; set; }
 
         private int numberOfParticipants { get; set; }
 
@@ -61,7 +61,7 @@ namespace RegistrationSystem.Pages
             participantInEvents = new List<ParticipantInEvent>();
             participants = ParticipantService.getParticipants();
             paymentMethods = PaymentMethodService.getPaymentMethods();
-            participantInEvents = ParticipantInEventService.getParticipantsInEvents();
+            participantInEvents = ParticipantInEventService.GetAllRelatedToEventId(Id).ToList<ParticipantInEvent>();
             eventUtils = new EventUtils();
             numberOfParticipants = eventUtils.CountParticipants(eventOb);
         }

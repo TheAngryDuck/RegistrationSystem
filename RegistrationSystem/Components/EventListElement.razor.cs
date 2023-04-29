@@ -12,6 +12,9 @@ namespace RegistrationSystem.Components
         [Parameter]
         public EventCallback OnEventDeleted { get; set; }
 
+        [Parameter]
+        public bool isPastElement { get; set; }
+
         private void NavigateToEvent()
         {
             NavigationManager.NavigateTo("/event/" + eventOb.Id, false);

@@ -3,7 +3,11 @@
 @using RegistrationSystem.Data.Interface;
 @inject IParticipantService ParticipantService;
 
-<EditForm Model="participant" OnSubmit="Save">
+<div class="container justify-content-center">
+    <RegistrationSystem.Components.SubBanner Title="Osavõtja info"/>
+    <div class="row justify-content-center main-row">
+        <div class="col center-block">
+            <EditForm Model="participant" OnSubmit="Save">
     <tbody style="background-color: white;">
         <tr>
             <td>Nimi: </td>
@@ -31,3 +35,7 @@
     </tbody>
     
 </EditForm>
+        </div>
+    </div>
+    <RegistrationSystem.Components.Footer />
+</div>

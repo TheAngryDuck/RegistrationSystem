@@ -16,6 +16,11 @@ namespace RegistrationSystem.Data.Service
             _participantInEventRepository.Add(participantInEvent);
         }
 
+        public IEnumerable<ParticipantInEvent> GetAllRelatedToEventId(Guid id)
+        {
+           return _participantInEventRepository.GetAllRelatedToEventId(id);
+        }
+
         public ParticipantInEvent getParticipantInEventById(Guid id)
         {
             return _participantInEventRepository.GetById(id);

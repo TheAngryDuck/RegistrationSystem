@@ -1,6 +1,4 @@
-﻿<div>
-
-            @if (participantInEvents != null)
+﻿@if (participantInEvents != null && participantInEvents.Count > 0)
             {
                 @foreach (var participant in participantInEvents)
                 {
@@ -8,10 +6,10 @@
 
                 }
             }
-            else
+else
             {
                 <tr>
-                    <td><h3>No events available!</h3></td>
+                    <td><h3>Üritusel puuduvad osavõtjad!</h3></td>
                 </tr>
             }
-</div>
+

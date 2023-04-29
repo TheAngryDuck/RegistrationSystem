@@ -73,3 +73,63 @@ a, .btn-link {
 .table-borderless tbody + tbody {
     border: 0;
 }
+
+.event-button {
+    color: darkgrey;
+    text-decoration: none;
+}
+
+.event-button:hover {
+    color: black;
+}
+
+.col {
+    max-width: 600px;
+    padding: 6px;
+    padding-bottom: 12px;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+}
+
+.banner-box {
+    width: 100%;
+    background-color: mediumblue;
+    color: white;
+    text-align: center;
+    height: 100%;
+}
+
+.banner-text {
+    margin-top:auto;
+    margin-bottom: auto;
+}
+
+.listHeader {
+    text-align: center;
+    background-color: mediumblue;
+}
+
+.footer-box {
+    background-color: dimgrey;
+    color: white;
+    text-align: center;
+    max-height: 300px;
+    max-width: 1200px;
+    min-height: 100px;
+}
+
+.sub-banner {
+    text-align: center;
+    max-width: 1200px;
+    max-height: 70px;
+    background-color: mediumblue;
+    color: white;
+}
+
+.main-row {
+    max-width: 1200px;
+    background-color: white;
+}

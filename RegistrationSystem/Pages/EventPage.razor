@@ -9,122 +9,157 @@
 
 
 <PageTitle>Event</PageTitle>
-<div>
-    <tbody style="background-color: white;">
-        <tr>
-            <td>Ürituse nimi:</td>
-            <td>@eventOb.Name</td>
-        </tr>
-        <tr>
-            <td>Kuupäev:</td>
-            <td>@eventOb.Date</td>
-        </tr>
-        <tr>
-            <td>Asukoht:</td>
-            <td>@eventOb.Location</td>
-        </tr>
-        <tr>
-            <td>Osavõtjate arv:</td>
-            <td>@numberOfParticipants</td>
-        </tr>
-    </tbody>
-</div>
-<div>
-    <thead style="background-color: white; text-align:center;">
-        <tr>
-            <th>Osavõtjad:</th>
-        </tr>
-    </thead>
-    <tbody style="background-color: white;">
-        <RegistrationSystem.Components.ParticipantList OnParticipantRemoved="EParticipantDeleted" participantInEvents="participantInEvents" />
-    </tbody>
-</div>
-<span>Loo uus osaleja? </span>
-<input type="checkbox" @bind="addNewParticipant"/>
-<br />
-
-@if (@addNewParticipant)
-{
-    <EditForm Model="participant" OnSubmit="SaveParticipant">
-            <tbody style="background-color: white;">
-            <tr>
-                <td><span>Oled Ettevõte? </span></td>
-                <td><InputCheckbox @bind-Value="registerCompany"></InputCheckbox></td>
-            </tr>
-            <tr>
-                <td><span>Nimi: </span></td>
-                <td>
-                    <InputText id="name" @bind-Value="participant.Name" />
-                </td>
-            </tr>
-        @if (!registerCompany)
-    {
-                <tr>
-                    <td><span>Perenimi: </span></td>
-                    <td>
-                        <InputText id="familyName" @bind-Value="participant.FamilyName" />
-                    </td>
-                </tr>
-                <tr>
-                    <td><span>Isikukood: </span></td>
-                    <td>
-                        <InputText id="id" @bind-Value="participant.IdCode" />
-                    </td>
-                </tr>
-    }
-        @if (registerCompany)
-    {
-                <tr>
-                    <td><span>Ettevõtte registrikood: </span></td>
-                    <td>
-                        <InputText id="code" @bind-Value="participant.RegistryCode" />
-                    </td>
-                </tr>
-    }
-            <tr><td><button class="btn btn-primary" type="submit">Submit</button></td></tr>
-        </tbody>
-    </EditForm>
-}
-else
-{
-    <EditForm Model="participantInEvent" OnSubmit="SaveEntry">
-        <tbody style="background-color: white;">
-            <tr>
-                <td><span>Osaleja </span></td>
-                <td><select class="form-select" @bind="participantInEvent.ParticipantId">
-                        @foreach (var par in participants)
-                        {
-                            if (par.FamilyName != null)
+<div class="container justify-content-center">
+    <RegistrationSystem.Components.SubBanner Title="Osavõtjad"/>
+    <div class="row justify-content-center main-row">
+        <div class="col">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <h3>Osavõtjad</h3>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody style="background-color: white;">
+                    <tr>
+                        <td>Ürituse nimi:</td>
+                        <td>@eventOb.Name</td>
+                    </tr>
+                    <tr>
+                        <td>Kuupäev:</td>
+                        <td>@eventOb.Date</td>
+                    </tr>
+                    <tr>
+                        <td>Asukoht:</td>
+                        <td>@eventOb.Location</td>
+                    </tr>
+                    <tr>
+                        <td>Osavõtjate arv:</td>
+                        <td>@numberOfParticipants</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row justify-content-center main-row">
+        <div class="col">
+            <table>
+                <thead style="background-color: white; text-align:center;">
+                    <tr>
+                        <th>Osavõtjad:</th>
+                    </tr>
+                </thead>
+                <tbody style="background-color: white;">
+                    <RegistrationSystem.Components.ParticipantList OnParticipantRemoved="EParticipantDeleted" participantInEvents="participantInEvents" />
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row justify-content-center main-row">
+        <div class="col">
+            <span>Loo uus osaleja? </span>
+            <input type="checkbox" @bind="addNewParticipant" />
+        </div>
+    </div>
+    <div class="row justify-content-center main-row">
+        <div class="col">
+            @if (@addNewParticipant)
+            {
+                <h3>Uue osavõtja loomine</h3>
+                <EditForm Model="participant" OnSubmit="SaveParticipant">
+                    <table>
+                        <tbody style="background-color: white;">
+                            <tr>
+                                <td><span>Oled Ettevõte? </span></td>
+                                <td><InputCheckbox @bind-Value="registerCompany"></InputCheckbox></td>
+                            </tr>
+                            <tr>
+                                <td><span>Nimi: </span></td>
+                                <td>
+                                    <InputText id="name" @bind-Value="participant.Name" />
+                                </td>
+                            </tr>
+                            @if (!registerCompany)
                             {
-                                <option value="@par.Id">@par.Name @par.FamilyName</option>
+                                <tr>
+                                    <td><span>Perenimi: </span></td>
+                                    <td>
+                                        <InputText id="familyName" @bind-Value="participant.FamilyName" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span>Isikukood: </span></td>
+                                    <td>
+                                        <InputText id="id" @bind-Value="participant.IdCode" />
+                                    </td>
+                                </tr>
                             }
-                            else
+                            @if (registerCompany)
                             {
-                                <option value="@par.Id">@par.Name</option>
+                                <tr>
+                                    <td><span>Ettevõtte registrikood: </span></td>
+                                    <td>
+                                        <InputText id="code" @bind-Value="participant.RegistryCode" />
+                                    </td>
+                                </tr>
                             }
-                        }
-                    </select></td>
-            </tr>
-            <tr>
-                <td><span>Maksmisviis </span></td>
-                <td><select class="form-select" @bind="participantInEvent.PaymentMethodId">
-                        @foreach (var method in paymentMethods)
-                        {
-                            <option value="@method.Id">@method.Name</option>
-                        }
-                </select></td>
-            </tr>
-            <tr>
-                <td><span>Osalejate arv: </span></td>
-                <td>
-                    <InputNumber id="numberOfParticipants" @bind-Value="participantInEvent.ParticipantCount" />
-                </td>
-            </tr>
-            <tr>
-                <td>lisa info: </td>
-                <InputTextArea @bind-Value="participantInEvent.Notes" />
-            </tr>
-            <tr><td><button class="btn btn-primary" type="submit">Submit</button></td></tr>
-            </tbody>
-    </EditForm>
-}
+                            <tr><td><button class="btn btn-primary" type="submit">Submit</button></td></tr>
+                        </tbody>
+                    </table>
+                </EditForm>
+            }
+            else
+            {
+                <h3>Osavõtjate lisamine</h3>
+                <EditForm Model="participantInEvent" OnSubmit="SaveEntry">
+                    <table>
+                        <tbody style="background-color: white;">
+                            <tr>
+                                <td><span>Osaleja </span></td>
+                                <td>
+                                    <select class="form-select" @bind="participantInEvent.ParticipantId">
+                                        @foreach (var par in participants)
+                                        {
+                                            if (par.FamilyName != null)
+                                            {
+                                                <option value="@par.Id">@par.Name @par.FamilyName</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@par.Id">@par.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>Maksmisviis </span></td>
+                                <td>
+                                    <select class="form-select" @bind="participantInEvent.PaymentMethodId">
+                                        @foreach (var method in paymentMethods)
+                                        {
+                                            <option value="@method.Id">@method.Name</option>
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>Osalejate arv: </span></td>
+                                <td>
+                                    <InputNumber id="numberOfParticipants" @bind-Value="participantInEvent.ParticipantCount" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>lisa info: </td>
+                                <InputTextArea @bind-Value="participantInEvent.Notes" />
+                            </tr>
+                            <tr><td><button class="btn btn-primary" type="submit">Submit</button></td></tr>
+                        </tbody>
+                    </table>
+                </EditForm>
+            }
+        </div>
+    </div>
+    <RegistrationSystem.Components.Footer />
+</div>

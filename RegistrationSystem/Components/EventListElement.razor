@@ -6,6 +6,10 @@
     <td>@eventOb.Name</td>
     <td>@eventOb.Date</td>
     <td>@eventOb.Location</td>
-    <td><button class="btn btn-light" @onclick="NavigateToEvent">OSAVÕTJAD</button></td>
-    <td><button class="btn btn-light" @onclick="DeleteEvent"><span class="e-icons btn-close" /></button></td>
+    <td><a class="event-button" @onclick="NavigateToEvent"><span>osavõtjad</span></a></td>
+    @if (!isPastElement)
+    {
+        <td><a @onclick="DeleteEvent"><span class="e-icons btn-close" /></a></td>
+    }
 </tr>
+    

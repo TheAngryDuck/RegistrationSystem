@@ -8,5 +8,10 @@ namespace RegistrationSystem.Data.Repository
         public ParticipantInEventRepository(RegistrationSystemContext context) : base(context)
         {
         }
+
+        public IEnumerable<ParticipantInEvent> GetAllRelatedToEventId(Guid id)
+        {
+            return _context.ParticipansInEvents.Where(p => p.EventId == id).ToList();
+        }
     }
 }

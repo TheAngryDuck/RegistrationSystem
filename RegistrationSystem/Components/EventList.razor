@@ -1,6 +1,6 @@
-﻿<div class="w-50 p-3" >
-<table class="table table-borderless" width="100%" ti>
-        <thead style="background-color: dodgerblue; text-align:center;" >
+﻿<div class="col" >
+<table class="table table-borderless">
+        <thead class="listHeader">
             <tr>
                 <th colspan="5"><h2 style="color: white;">@title</h2></th>
             </tr>
@@ -10,8 +10,15 @@
         {
             @foreach (var eventOb in events)
             {
-                    <EventListElement eventOb="@eventOb" OnEventDeleted="EventDeleted"></EventListElement>
-                
+                    if (isFutureList)
+                    {
+                        <EventListElement eventOb="@eventOb" OnEventDeleted="EventDeleted"></EventListElement>
+                    }
+                    else
+                    {
+                        <EventListElement eventOb="@eventOb" OnEventDeleted="EventDeleted" isPastElement="true"></EventListElement>
+                    }
+                    
             }
             @if (isFutureList)
                 {
@@ -27,7 +34,7 @@
         else
         {
             <tr>
-                <td><h3>No events available!</h3></td>
+                <td><h3>Ühtegi üritust pole saadaval!</h3></td>
             </tr>
         }
     </tbody>

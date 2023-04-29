@@ -6,7 +6,7 @@ namespace RegistrationSystem.Components
     public partial class ParticipantList
     {
         [Parameter]
-        public IEnumerable<ParticipantInEvent>? participantInEvents { get; set; }
+        public List<ParticipantInEvent>? participantInEvents { get; set; }
 
         [Parameter]
         public EventCallback OnParticipantRemoved { get; set; }

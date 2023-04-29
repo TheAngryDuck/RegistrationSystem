@@ -23,4 +23,12 @@
     <PackageReference Include="Syncfusion.Blazor" Version="21.1.41" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\css\img\libled.jpg" />
+    <None Include="wwwroot\css\img\logo.svg" />
+    <None Include="wwwroot\css\img\pilt.jpg" />
+    <None Include="wwwroot\css\img\remove.svg" />
+    <None Include="wwwroot\css\img\symbol.svg" />
+  </ItemGroup>
+
 </Project>

@@ -9,5 +9,6 @@ namespace RegistrationSystem.Data.Interface
         public void removeParticipantInEvent(ParticipantInEvent participantInEvent);
         public void updateParticipantInEvent(ParticipantInEvent participantInEvent);
         public ParticipantInEvent getParticipantInEventById(Guid id);
+        public IEnumerable<ParticipantInEvent> GetAllRelatedToEventId(Guid id);
     }
 }
