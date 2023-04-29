@@ -1,0 +1,37 @@
+﻿@page "/payment"
+
+@using RegistrationSystem.Data.Interface;
+@inject IPaymentMethodService PaymentMethodService;
+@inject NavigationManager NavigationManager
+
+<div class="container justify-content-center">
+    <SubBanner Title="Maksemeetodid" />
+    <div class="row justify-content-center main-row">
+        <PaymentMethodsList PaymentMethods="@PaymentMethods" OnMethodRemoved="PaymentDeleted" Title="Maksemeetodid" />
+    </div>
+    <div class="row justify-content-center main-row">
+        <div class="col">
+            <EditForm Model="PaymentMethod" OnSubmit="Save">
+                <table class="table table-borderless">
+                    <thead style="text-align:center;">
+                        <tr class="justify-content-center">
+                            <th colspan="2"><h2 style="width:fit-content;">Ürituse Lisamine</h2></th>
+                        </tr>
+                    </thead>
+                    <tbody style="background-color: white;">
+                        <tr>
+                            <td>Nimi: </td>
+                            <td><InputText id="name" @bind-Value="PaymentMethod.Name" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="btn btn-primary" type="submit">Lisa</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </EditForm>
+        </div>
+    </div>
+    <Footer />
+</div>

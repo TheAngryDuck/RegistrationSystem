@@ -24,7 +24,7 @@ namespace RegistrationSystem.Pages
 
         private List<ParticipantInEvent> ParticipantInEvents { get; set; }
 
-        private int NumberOfParticipants { get; set; }
+        private int numberOfParticipants { get; set; }
 
         private void SaveParticipant()
         {
@@ -62,7 +62,7 @@ namespace RegistrationSystem.Pages
 
         }
 
-        private void EParticipantDeleted()
+        private void ParticipantDeleted()
         {
             NavigationManager.NavigateTo("/event/" + EventOb.Id, true);
         }
@@ -78,7 +78,7 @@ namespace RegistrationSystem.Pages
             Participants = ParticipantService.getParticipants();
             PaymentMethods = PaymentMethodService.getPaymentMethods();
             ParticipantInEvents = ParticipantInEventService.GetAllRelatedToEventId(Id).ToList<ParticipantInEvent>();
-            NumberOfParticipants = util.CountParticipants(EventOb);
+            numberOfParticipants = util.CountParticipants(EventOb);
         }
     }
 }

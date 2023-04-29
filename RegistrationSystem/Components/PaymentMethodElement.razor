@@ -1,0 +1,10 @@
+﻿@using RegistrationSystem.Data.Interface;
+@inject IPaymentMethodService PaymentMethodService;
+@inject NavigationManager NavigationManager
+
+<tr>
+    <td>@PaymentMethod.Name</td>
+<td><button class="btn btn-light" @onclick="DeleteMethod">kustuta</button></td>
+</tr>
+
+

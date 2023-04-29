@@ -23,6 +23,5 @@ namespace RegistrationSystem.Components
             ParticipantInEventService.removeParticipantInEvent(participant);
             OnParticipantRemoved.InvokeAsync();
         }
-
     }
 }

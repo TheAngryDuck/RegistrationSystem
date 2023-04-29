@@ -1,0 +1,25 @@
+﻿
+<div class="col">
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="5"><h2>@Title</h2></th>
+            </tr>
+        </thead>
+        <tbody style="background-color: white;">
+            @if (PaymentMethods != null)
+            {
+                @foreach (var paymentMethod in PaymentMethods)
+                {
+                    <PaymentMethodElement PaymentMethod="@paymentMethod" OnParticipantRemoved="MethodRemoved" />
+                }
+            }
+            else
+            {
+                <tr>
+                    <td><h3>Ühtegi maksemeetodit pole saadaval!</h3></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
