@@ -12,7 +12,6 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddDbContext<RegistrationSystemContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddTransient<IEventRepository, EventRepository>();
 builder.Services.AddTransient<IParticipantRepository, ParticipantRepository>();
