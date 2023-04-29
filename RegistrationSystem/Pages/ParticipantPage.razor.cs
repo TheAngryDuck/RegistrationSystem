@@ -14,6 +14,11 @@ namespace RegistrationSystem.Pages
             ParticipantService.updateParticipant(participant);
         }
 
+        private void BackToLanding()
+        {
+            NavigationManager.NavigateTo("/", true);
+        }
+
         private Participant participant { get; set; }
 
         protected override void OnParametersSet()

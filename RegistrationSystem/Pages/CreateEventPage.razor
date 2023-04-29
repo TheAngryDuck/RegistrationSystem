@@ -33,7 +33,14 @@
                             <td>lisa info: </td>
                             <td><InputTextArea @bind-Value="eventOb.Notes" /></td>
                         </tr>
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <tr>
+                            <td>
+                                <button class="btn-outline-danger" @onclick="BackToLanding">Tagasi</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" type="submit">Lisa</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 

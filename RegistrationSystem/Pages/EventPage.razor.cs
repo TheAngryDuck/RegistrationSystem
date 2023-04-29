@@ -27,23 +27,41 @@ namespace RegistrationSystem.Pages
 
         private int numberOfParticipants { get; set; }
 
-        private EventUtils eventUtils { get; set; }
+        private EventUtils EventUtils { get; set; }
 
         private void SaveParticipant()
         {
-            if (eventUtils.isValidIdCode(participant.IdCode))
+            if (participant.IdCode != null && participant.Name != null && participant.FamilyName != null)
             {
+                if (EventUtils.isValidIdCode(participant.IdCode))
+                {
+                    ParticipantService.addParticipant(participant);
+                    addNewParticipant = false;
+                    NavigationManager.NavigateTo("/event/" + eventOb.Id, true);
+                }
+            } else if(participant.RegistryCode != null && participant.Name != null)
+                {
                 ParticipantService.addParticipant(participant);
                 addNewParticipant = false;
                 NavigationManager.NavigateTo("/event/" + eventOb.Id, true);
             }
+            
+        }
+
+        private void BackToLanding()
+        {
+            NavigationManager.NavigateTo("/", true);
         }
 
         private void SaveEntry()
         {
-            participantInEvent.EventId = eventOb.Id;
-            ParticipantInEventService.addParticipantInEvent(participantInEvent);
-            NavigationManager.NavigateTo("/event/" + eventOb.Id, true);
+            if (participantInEvent.ParticipantId == Guid.Empty && participantInEvent.PaymentMethodId == Guid.Empty && participantInEvent.ParticipantCount > 0) 
+            { 
+                participantInEvent.EventId = eventOb.Id;
+                ParticipantInEventService.addParticipantInEvent(participantInEvent);
+                NavigationManager.NavigateTo("/event/" + eventOb.Id, true);
+            }
+            
         }
 
         private void EParticipantDeleted()
@@ -62,8 +80,8 @@ namespace RegistrationSystem.Pages
             participants = ParticipantService.getParticipants();
             paymentMethods = PaymentMethodService.getPaymentMethods();
             participantInEvents = ParticipantInEventService.GetAllRelatedToEventId(Id).ToList<ParticipantInEvent>();
-            eventUtils = new EventUtils();
-            numberOfParticipants = eventUtils.CountParticipants(eventOb);
+            EventUtils = new EventUtils();
+            numberOfParticipants = EventUtils.CountParticipants(eventOb);
         }
     }
 }
