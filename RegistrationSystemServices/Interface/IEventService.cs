@@ -1,6 +1,6 @@
-﻿using RegistrationSystem.Data.Entity;
+﻿using RegistrationSystemDataLayer.Entity;
 
-namespace RegistrationSystem.Data.Interface
+namespace RegistrationSystemDataLayer.Interface
 {
     public interface IEventService
     {

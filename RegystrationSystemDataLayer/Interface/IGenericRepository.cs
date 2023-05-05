@@ -1,4 +1,4 @@
-﻿namespace RegistrationSystem.Data.Interface
+﻿namespace RegistrationSystemDataLayer.Interface
 {
     public interface IGenericRepository<T> where T : class
     {

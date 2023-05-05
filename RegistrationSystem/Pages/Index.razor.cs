@@ -1,13 +1,14 @@
 ﻿
 using Microsoft.AspNetCore.Components;
+using RegistrationSystemDataLayer.Entity;
 
 namespace RegistrationSystem.Pages
 {
     public partial class Index
     {
-        private List<Data.Entity.Event>? futureEvents { get; set; }
+        private List<Event>? futureEvents { get; set; }
 
-        private List<Data.Entity.Event>? pastEvents { get; set; }
+        private List<Event>? pastEvents { get; set; }
 
         private void EventDeleted()
         {
@@ -16,8 +17,8 @@ namespace RegistrationSystem.Pages
 
         protected override void OnInitialized()
         {
-            futureEvents = new List<Data.Entity.Event>();
-            pastEvents = new List<Data.Entity.Event>();
+            futureEvents = new List<Event>();
+            pastEvents = new List<Event>();
             var events = EventService.getEvents();
             foreach (var e in events)
             {

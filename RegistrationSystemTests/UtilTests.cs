@@ -1,6 +1,6 @@
 ﻿
-using RegistrationSystem.Data.Entity;
 using RegistrationSystem.Utils;
+using RegistrationSystemDataLayer.Entity;
 
 namespace RegistrationSystemTests
 {

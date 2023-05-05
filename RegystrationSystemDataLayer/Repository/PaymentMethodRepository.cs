@@ -1,7 +1,7 @@
-﻿using RegistrationSystem.Data.Entity;
-using RegistrationSystem.Data.Interface;
+﻿using RegistrationSystemDataLayer.Entity;
+using RegistrationSystemDataLayer.Interface;
 
-namespace RegistrationSystem.Data.Repository
+namespace RegistrationSystemDataLayer.Repository
 {
     public class PaymentMethodRepository : GenericRepository<PaymentMethod>, IPaymentMethodRepository
     {

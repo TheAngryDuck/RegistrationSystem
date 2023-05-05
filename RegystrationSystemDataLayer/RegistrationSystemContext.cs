@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RegistrationSystem.Data.Entity;
+using RegistrationSystemDataLayer.Entity;
 
-namespace RegistrationSystem.Data
+namespace RegistrationSystemDataLayer
 {
     public class RegistrationSystemContext : DbContext
     {

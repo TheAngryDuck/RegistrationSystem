@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using RegistrationSystem.Data;
-using RegistrationSystem.Data.Interface;
-using RegistrationSystem.Data.Repository;
-using RegistrationSystem.Data.Service;
+using RegistrationSystemDataLayer;
 using RegistrationSystem.Utils;
 using Syncfusion.Blazor;
+using RegistrationSystemDataLayer.Interface;
+using RegistrationSystemDataLayer.Repository;
+using RegistrationSystemDataLayer.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

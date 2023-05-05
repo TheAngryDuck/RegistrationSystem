@@ -1,7 +1,7 @@
 
 using Microsoft.AspNetCore.Components;
-using RegistrationSystem.Data.Entity;
-using RegistrationSystem.Data.Service;
+using RegistrationSystemDataLayer.Entity;
+using RegistrationSystemDataLayer.Service;
 
 namespace RegistrationSystem.Components
 {

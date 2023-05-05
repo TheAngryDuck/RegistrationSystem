@@ -1,6 +1,6 @@
 
 using Microsoft.AspNetCore.Components;
-using RegistrationSystem.Data.Entity;
+using RegistrationSystemDataLayer.Entity;
 
 namespace RegistrationSystem.Pages
 {

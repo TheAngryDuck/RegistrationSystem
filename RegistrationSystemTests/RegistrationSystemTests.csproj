@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RegistrationSystem\RegistrationSystem.csproj" />
+    <ProjectReference Include="..\RegystrationSystemDataLayer\RegistrationSystemDataLayer.csproj" />
   </ItemGroup>
 
 </Project>

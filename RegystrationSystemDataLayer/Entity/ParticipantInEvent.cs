@@ -1,4 +1,4 @@
-﻿namespace RegistrationSystem.Data.Entity
+﻿namespace RegistrationSystemDataLayer.Entity
 {
     public class ParticipantInEvent
     {

@@ -1,6 +1,6 @@
-﻿using RegistrationSystem.Data.Interface;
+﻿using RegistrationSystemDataLayer.Interface;
 
-namespace RegistrationSystem.Data.Repository
+namespace RegistrationSystemDataLayer.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
