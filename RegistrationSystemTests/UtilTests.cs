@@ -76,5 +76,35 @@ namespace RegistrationSystemTests
             // Assert
             Assert.AreEqual(15, util.CountParticipants(eventOb));
         }
+
+        [TestMethod]
+        public void IsValidDateReturnsTrueOnCorrectDateInputTest()
+        {
+            // Arrange
+            var util = new EventUtils();
+
+            // Assert
+            Assert.IsTrue(util.isValidDate("3", "97", "09", "24"));
+        }
+
+        [TestMethod]
+        public void IsValidDateReturnsFalseOnIncorrectDateTest()
+        {
+            // Arrange
+            var util = new EventUtils();
+
+            // Assert
+            Assert.IsFalse(util.isValidDate("3", "97", "02", "31"));
+        }
+
+        [TestMethod]
+        public void IsValidDateReturnsFalseOnFutureDateTest()
+        {
+            // Arrange
+            var util = new EventUtils();
+
+            // Assert
+            Assert.IsFalse(util.isValidDate("6", "97", "09", "24"));
+        }
     }
 }
