@@ -9,9 +9,14 @@ namespace RegistrationSystem.Pages
         [Parameter]
         public Guid Id { get; set; }
 
+        private bool IsCompany { get; set; }
+
         private void Save()
         {
-            ParticipantService.updateParticipant(Participant);
+            if (valUtil.ValidateParticipant(Participant, IsCompany)) 
+            {
+                ParticipantService.updateParticipant(Participant);
+            } 
         }
 
         private void BackToLanding()
@@ -24,6 +29,10 @@ namespace RegistrationSystem.Pages
         protected override void OnParametersSet()
         {
             Participant = ParticipantService.getParticipantById(Id);
+            if (Participant.RegistryCode != null)
+            { 
+                IsCompany = true;
+            }
         }
     }
 }

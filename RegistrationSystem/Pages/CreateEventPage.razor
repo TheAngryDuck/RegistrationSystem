@@ -1,8 +1,11 @@
 ﻿@page "/createEvent"
 @page "/event/create"
 @using RegistrationSystemDataLayer.Interface;
+@using RegistrationSystem.Utils;
 @inject IEventService EventService;
 @inject NavigationManager NavigationManager
+@inject ValidationUtil util
+
 
 <div class="container justify-content-center">
     <SubBanner Title="Ürituse lisamine"/>

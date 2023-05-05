@@ -14,7 +14,7 @@ namespace RegistrationSystemTests
             // Arrange
             var code = "39709241234";
 
-            var util = new EventUtils();
+            var util = new ValidationUtil();
 
             // Assert
             Assert.IsTrue(util.isValidIdCode(code));
@@ -26,7 +26,7 @@ namespace RegistrationSystemTests
             // Arrange
             var code = "79709241234";
 
-            var util = new EventUtils();
+            var util = new ValidationUtil();
 
             // Assert
             Assert.IsFalse(util.isValidIdCode(code));
@@ -39,7 +39,7 @@ namespace RegistrationSystemTests
             var code = "7970924123412345";
             var code2 = "7";
 
-            var util = new EventUtils();
+            var util = new ValidationUtil();
 
             // Assert
             Assert.IsFalse(util.isValidIdCode(code));
@@ -52,7 +52,7 @@ namespace RegistrationSystemTests
             // Arrange
             var code = "79abcd41234";
 
-            var util = new EventUtils();
+            var util = new ValidationUtil();
 
             // Assert
             Assert.IsFalse(util.isValidIdCode(code));
@@ -81,7 +81,7 @@ namespace RegistrationSystemTests
         public void IsValidDateReturnsTrueOnCorrectDateInputTest()
         {
             // Arrange
-            var util = new EventUtils();
+            var util = new ValidationUtil();
 
             // Assert
             Assert.IsTrue(util.isValidDate("3", "97", "09", "24"));
@@ -91,7 +91,7 @@ namespace RegistrationSystemTests
         public void IsValidDateReturnsFalseOnIncorrectDateTest()
         {
             // Arrange
-            var util = new EventUtils();
+            var util = new ValidationUtil();
 
             // Assert
             Assert.IsFalse(util.isValidDate("3", "97", "02", "31"));
@@ -101,7 +101,7 @@ namespace RegistrationSystemTests
         public void IsValidDateReturnsFalseOnFutureDateTest()
         {
             // Arrange
-            var util = new EventUtils();
+            var util = new ValidationUtil();
 
             // Assert
             Assert.IsFalse(util.isValidDate("6", "97", "09", "24"));

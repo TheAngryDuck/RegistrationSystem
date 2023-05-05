@@ -23,6 +23,7 @@ builder.Services.AddTransient<IParticipantService, ParticipantService>();
 builder.Services.AddTransient<IPaymentMethodService, PaymentMethodService>();
 builder.Services.AddTransient<IParticipantInEventService, ParticipantInEventService>();
 builder.Services.AddSingleton<EventUtils, EventUtils>();
+builder.Services.AddSingleton<ValidationUtil, ValidationUtil>();
 builder.Services.AddSyncfusionBlazor();
 var app = builder.Build();
 

@@ -1,7 +1,10 @@
 ﻿@page "/participant/{Id:guid}"
+@using RegistrationSystem.Utils;
 @using RegistrationSystemDataLayer.Interface;
 @inject IParticipantService ParticipantService;
 @inject NavigationManager NavigationManager
+@inject ValidationUtil valUtil
+
 
 <div class="container justify-content-center">
     <SubBanner Title="Osavõtja info"/>
@@ -13,7 +16,7 @@
             <td>Nimi: </td>
             <td><InputText id="name" @bind-Value="Participant.Name" /></td>
         </tr>
-        @if (Participant.IdCode != null)
+         @if (!IsCompany)
         {
             <tr>
                 <td>Perenimi: </td>
@@ -24,7 +27,7 @@
                 <InputText id="id" @bind-Value="Participant.IdCode" />
             </tr>
         }
-        @if (Participant.RegistryCode != null)
+         @if (IsCompany)
         {
             <tr>
                 <td>Ettevõtte registrikood: </td>

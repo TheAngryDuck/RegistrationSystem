@@ -6,7 +6,8 @@
 @inject IPaymentMethodService PaymentMethodService;
 @inject IParticipantInEventService ParticipantInEventService;
 @inject NavigationManager NavigationManager
-@inject EventUtils util
+@inject EventUtils eventUtil
+@inject ValidationUtil valUtil
 
 <PageTitle>Event</PageTitle>
 <div class="container justify-content-center">
@@ -38,6 +39,13 @@
                         <td>Osavõtjate arv:</td>
                         <td>@numberOfParticipants</td>
                     </tr>
+                    @if (EventOb.Notes != null && EventOb.Notes.Length > 0)
+                    {
+                        <tr>
+                            <td>Lisa Info: </td>
+                            <td>@EventOb.Notes</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -67,7 +75,7 @@
             @if (AddNewParticipant)
             {
                 <h3>Uue osavõtja loomine</h3>
-                <EditForm Model="Participant" OnSubmit="SaveParticipant">
+                <EditForm Model="Participant">
                     <table>
                         <tbody style="background-color: white;">
                             <tr>
@@ -104,10 +112,44 @@
                                     </td>
                                 </tr>
                             }
-                            <tr><td><button class="btn btn-primary" type="submit">Submit</button></td></tr>
                         </tbody>
                     </table>
                 </EditForm>
+                <EditForm Model="ParticipantInEvent" OnSubmit="SaveParticipant">
+                    <table>
+                        <tbody style="background-color: white;">
+                            <tr>
+                                <td><span>Maksmisviis </span></td>
+                                <td>
+                                    <select class="form-select" @bind="ParticipantInEvent.PaymentMethodId">
+                                        @foreach (var method in PaymentMethods)
+                                        {
+                                            <option value="@method.Id">@method.Name</option>
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            @if (RegisterCompany)
+                            {
+                                <tr>
+                                    <td><span>Osalejate arv: </span></td>
+                                    <td>
+                                        <InputNumber id="numberOfParticipants" @bind-Value="ParticipantInEvent.ParticipantCount" />
+                                    </td>
+                                </tr>
+                            }
+                            <tr>
+                                <td>lisa info: </td>
+                                <InputTextArea @bind-Value="ParticipantInEvent.Notes" />
+                            </tr>
+                            <tr>
+                                <td><button class="btn-outline-danger" @onclick="BackToLanding">Tagasi</button></td>
+                                <td><button class="btn btn-primary" type="submit">Lisa</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </EditForm>
+
             }
             else
             {
@@ -156,7 +198,7 @@
                             </tr>
                             <tr>
                                 <td><button class="btn-outline-danger" @onclick="BackToLanding">Tagasi</button></td>
-                                <td><button class="btn btn-primary" type="submit">Submit</button></td>
+                                <td><button class="btn btn-primary" type="submit">Lisa</button></td>
                             </tr>
                         </tbody>
                     </table>

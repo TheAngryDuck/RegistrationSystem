@@ -1,5 +1,8 @@
 ﻿@page "/payment"
+@using RegistrationSystem.Utils;
 @using RegistrationSystemDataLayer.Interface;
+@inject ValidationUtil valUtil
+
 
 @inject IPaymentMethodService PaymentMethodService;
 @inject NavigationManager NavigationManager

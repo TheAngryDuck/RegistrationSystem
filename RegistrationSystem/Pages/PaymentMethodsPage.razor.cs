@@ -9,7 +9,7 @@ namespace RegistrationSystem.Pages
 
         private void Save()
             {
-                if (PaymentMethod.Name != null)
+                if (valUtil.ValidatePaymentMethod(PaymentMethod))
                 {
                     PaymentMethodService.addPaymentMethod(PaymentMethod);
                     NavigationManager.NavigateTo("/payment", true);

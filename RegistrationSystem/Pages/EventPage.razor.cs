@@ -28,22 +28,19 @@ namespace RegistrationSystem.Pages
 
         private void SaveParticipant()
         {
-            if (Participant.IdCode != null && Participant.Name != null && Participant.FamilyName != null)
+            if (valUtil.ValidateParticipant(Participant, RegisterCompany))
             {
-                if (util.isValidIdCode(Participant.IdCode))
+                if (!RegisterCompany) 
                 {
-                    ParticipantService.addParticipant(Participant);
-                    AddNewParticipant = false;
-                    NavigationManager.NavigateTo("/event/" + EventOb.Id, true);
+                    ParticipantInEvent.ParticipantCount = 1;
                 }
-            }
-            else if (Participant.RegistryCode != null && Participant.Name != null)
-            {
+                Guid id = Guid.NewGuid();
+                ParticipantInEvent.ParticipantId = id;
+                Participant.Id = id;
                 ParticipantService.addParticipant(Participant);
                 AddNewParticipant = false;
-                NavigationManager.NavigateTo("/event/" + EventOb.Id, true);
+                SaveEntry();
             }
-
         }
 
         private void BackToLanding()
@@ -53,7 +50,7 @@ namespace RegistrationSystem.Pages
 
         private void SaveEntry()
         {
-            if (ParticipantInEvent.ParticipantId == Guid.Empty && ParticipantInEvent.PaymentMethodId == Guid.Empty && ParticipantInEvent.ParticipantCount > 0)
+            if (valUtil.ValidateParticipantInEvent(ParticipantInEvent))
             {
                 ParticipantInEvent.EventId = EventOb.Id;
                 ParticipantInEventService.addParticipantInEvent(ParticipantInEvent);
@@ -78,7 +75,7 @@ namespace RegistrationSystem.Pages
             Participants = ParticipantService.getParticipants();
             PaymentMethods = PaymentMethodService.getPaymentMethods();
             ParticipantInEvents = ParticipantInEventService.GetAllRelatedToEventId(Id).ToList<ParticipantInEvent>();
-            numberOfParticipants = util.CountParticipants(EventOb);
+            numberOfParticipants = eventUtil.CountParticipants(EventOb);
         }
     }
 }

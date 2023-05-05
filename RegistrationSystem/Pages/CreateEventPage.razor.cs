@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components;
+using RegistrationSystem.Utils;
 using RegistrationSystemDataLayer.Entity;
 
 namespace RegistrationSystem.Pages
@@ -7,7 +8,7 @@ namespace RegistrationSystem.Pages
     {
         private void Save()
         {
-            if (EventOb.Name != null && EventOb.Location != null)
+            if (util.ValidateEvent(EventOb))
             {
                 EventService.addEvent(EventOb);
                 NavigationManager.NavigateTo("/", true);
